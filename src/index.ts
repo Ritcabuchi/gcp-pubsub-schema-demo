@@ -57,8 +57,7 @@ async function main() {
   // 3. Publish message conforming to schema
   const message = {
     username: 'alice',
-    // message: 'Hello, world!',
-    // mmm: 'oops',
+    message: 'Hello, world!',
     timestamp: Date.now(),
   };
   const dataBuffer = Buffer.from(JSON.stringify(message));

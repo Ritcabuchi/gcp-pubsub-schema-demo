@@ -5,6 +5,9 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node src/index.ts",
+    "publisher": "ts-node src/publisher.ts",
+    "subscriber": "ts-node src/subscriber.ts",
+    "test-schema": "ts-node src/test-schema-validation.ts",
     "build": "tsc"
   },
   "dependencies": {
