@@ -1,4 +1,4 @@
-# pubsub-schema-test
+# gcp-pubsub-schema-demo
 
 โปรเจกต์นี้แสดงการใช้งาน Google Pub/Sub Schema และการส่งข้อมูลไปยัง Topic ด้วย TypeScript
 

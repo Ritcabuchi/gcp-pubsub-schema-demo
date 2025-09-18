@@ -1,5 +1,5 @@
 {
-  "name": "pubsub-schema-test",
+  "name": "gcp-pubsub-schema-demo",
   "version": "1.0.0",
   "description": "Google Pub/Sub schema creation and publish example in TypeScript",
   "main": "src/index.ts",
