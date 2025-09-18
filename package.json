@@ -1,0 +1,19 @@
+{
+  "name": "pubsub-schema-test",
+  "version": "1.0.0",
+  "description": "Google Pub/Sub schema creation and publish example in TypeScript",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@google-cloud/pubsub": "^4.0.0",
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "ts-node": "^10.0.0",
+    "@types/node": "^20.0.0"
+  }
+}
