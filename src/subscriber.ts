@@ -93,62 +93,22 @@ function createMessageHandler() {
       console.log(`   📊 Attributes:`, message.attributes);
       console.log(`   � Raw Data:`, rawData);
       
-      // ตรวจสอบ schema validation
       const validationResult = validateMessageSchema(rawData);
       console.log(`   ✅ Schema Valid: ${validationResult.isValid}`);
       if (!validationResult.isValid) {
         console.log(`   ⚠️  Schema Errors:`, validationResult.errors);
       }
       
-      // พยายาม cast เป็น UserMessage
-      const messageData = rawData as UserMessage;
-      if (messageData.username) {
-        console.log(`   📝 ผู้ส่ง: ${messageData.username}`);
-      }
-      if (messageData.message) {
-        console.log(`   💬 ข้อความ: ${messageData.message}`);
-      }
-      if (messageData.timestamp) {
-        console.log(`   ⏰ เวลา: ${new Date(messageData.timestamp).toLocaleString()}`);
-      }
-      
-      // จำลองการประมวลผลข้อความ
-      processMessage(messageData)
-        .then(() => {
-          // Acknowledge ว่าประมวลผลเรียบร้อยแล้ว
-          message.ack();
-          console.log(`✅ ประมวลผลข้อความ ${message.id} เรียบร้อย`);
-        })
-        .catch((error) => {
-          console.error(`❌ เกิดข้อผิดพลาดในการประมวลผล:`, error);
-          // Nack ข้อความเพื่อให้ส่งมาใหม่
-          message.nack();
-        });
+      message.ack();
+      console.log(`✅ ประมวลผลข้อความ ${message.id} เรียบร้อย`);
         
     } catch (error) {
       console.error('❌ เกิดข้อผิดพลาดในการอ่านข้อความ:', error);
-      message.nack(); // ปฏิเสธข้อความและให้ส่งมาใหม่
+      message.nack();
     }
   };
 }
 
-async function processMessage(messageData: UserMessage): Promise<void> {
-  // จำลองการประมวลผลข้อความ
-  // ในความเป็นจริงอาจเป็นการบันทึกลงฐานข้อมูล, ส่งอีเมล, หรือการประมวลผลอื่นๆ
-  
-  return new Promise((resolve, reject) => {
-    // จำลองเวลาในการประมวลผล
-    setTimeout(() => {
-      // จำลองโอกาสของข้อผิดพลาด 10%
-      if (Math.random() < 0.1) {
-        reject(new Error('การประมวลผลล้มเหลว'));
-      } else {
-        console.log(`   ⚙️  กำลังประมวลผลข้อความจาก ${messageData.username}...`);
-        resolve();
-      }
-    }, 1000);
-  });
-}
 
 function createErrorHandler() {
   return (error: Error) => {
